@@ -2,11 +2,15 @@
 
 /**
 * _print_char - prints a charachter
-* @c:  the character to print
+* @argPtr: argument pointer
 * Return: 1 (success)
  */
 
-int _print_char(char c)
+int _print_char(va_list argPtr)
 {
-	return (_putchar(c));
+	char c;
+
+	c = va_arg(argptr, int);
+	_putchar(c)
+	return (1);
 }

@@ -9,6 +9,6 @@ int _print_str(va_list);
 int _strlen(char *);
 int _print_percent(void);
 int _printf(const char *format, ...);
-int _print_char(char c);
+int _print_char(va_list argPtr);
 
 #endif
