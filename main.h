@@ -6,5 +6,6 @@
 
 int _putchar(char);
 int _print_str(va_list);
+int _strlen(char *);
 
 #endif
