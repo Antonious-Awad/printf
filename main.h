@@ -23,5 +23,6 @@ int _strlen(char *);
 int _print_percent(va_list);
 int _printf(const char *format, ...);
 int _print_char(va_list argPtr);
+int _print_int(va_list argPtr);
 
 #endif
