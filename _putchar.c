@@ -1,5 +1,4 @@
-#include <unistd.h>
-
+#include "main.h"
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -9,5 +8,17 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	static char buffer[BUFF_SIZE];
+	static int i;
+
+	if (i >= BUFF_SIZE || c == -1)
+	{
+		write(1, &buffer, i);
+		i = 0;
+	}
+	else if (c != -1)
+	{
+		buffer[i++] = c;
+	}
+	return (1);
 }
