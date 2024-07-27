@@ -22,7 +22,7 @@ int _print_bin(va_list argPtr)
 		len++;
 	}
 
-	p = malloc(sizeof(char) * (len + 1));
+	p = malloc(sizeof(char) * len);
 
 	if (!p)
 		return (-1);
