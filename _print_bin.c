@@ -8,7 +8,7 @@
 int _print_bin(va_list argPtr)
 {
 	unsigned int temp, num;
-	int len = 0, i, bin, counter;
+	int len = 0, i = 0, bin, counter = 0;
 	char *p;
 
 	num = va_arg(argPtr, unsigned int);
