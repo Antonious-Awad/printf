@@ -42,6 +42,7 @@ int _printf(const char *format, ...)
 			output_len++;
 		}
 	}
+	_putchar(-1);
 	va_end(argPtr);
 	return (output_len);
 }
