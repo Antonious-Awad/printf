@@ -8,7 +8,7 @@
 int _print_bin(va_list argPtr)
 {
 	unsigned int temp, num;
-	int len = 0, i, bin, counter;
+	int len = 0, i = 0, bin, counter = 0;
 	char *p;
 
 	num = va_arg(argPtr, unsigned int);
@@ -27,16 +27,16 @@ int _print_bin(va_list argPtr)
 	if (!p)
 		return (-1);
 
-	i = len;
-	p[i--] = '\0';
 	while (num > 0)
 	{
 		bin = num % 2;
-		p[i--] = bin + '0';
+		p[i++] = bin + '0';
 		num /= 2;
 	}
+	p[i] = '\0';
 
-	counter = _puts(p);
+	for (i = (len - 1); i >= 0; i--)
+		counter += _putchar(p[i]);
 	free(p);
 	return (counter);
 }
