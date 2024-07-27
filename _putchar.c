@@ -16,7 +16,7 @@ int _putchar(char c)
 		write(1, &buffer, i);
 		i = 0;
 	}
-	else if (c != -1)
+	if (c != -1)
 	{
 		buffer[i++] = c;
 	}
