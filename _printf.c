@@ -13,9 +13,10 @@ int _printf(const char *format, ...)
 									{"%%", _print_percent},
 									{"%c", _print_char},
 									{"%d", _print_int},
-									{"%i", _print_int}};
+									{"%i", _print_int},
+									{"%b", _print_bin}};
 	/*Length of convert struct*/
-	int convert_len = 5, i, j, output_len = 0, isSpecifier;
+	int convert_len = 6, i, j, output_len = 0, isSpecifier;
 	va_list argPtr;
 
 	va_start(argPtr, format);
