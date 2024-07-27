@@ -10,10 +10,12 @@
 int _printf(const char *format, ...)
 {
 	fs convert[] = {{"%s", _print_str},
-				    {"%%", _print_percent},
-				    {"%c", _print_char}};
+									{"%%", _print_percent},
+									{"%c", _print_char},
+									{"%d", _print_int},
+									{"%i", _print_int}};
 	/*Length of convert struct*/
-	int convert_len = 3, i, j, output_len = 0, isSpecifier;
+	int convert_len = 5, i, j, output_len = 0, isSpecifier;
 	va_list argPtr;
 
 	va_start(argPtr, format);
