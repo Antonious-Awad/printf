@@ -8,7 +8,7 @@
 int _print_str(va_list argPtr)
 {
 	char *str;
-	int i, len;
+	int len;
 
 	str = va_arg(argPtr, char *);
 
@@ -16,13 +16,11 @@ int _print_str(va_list argPtr)
 	{
 		str = "(null)";
 		len = _strlen(str);
-		for (i = 0; i < len; i++)
-			_putchar(str[i]);
+		_puts(str);
 		return (len);
 	}
 
 	len = _strlen(str);
-	for (i = 0; i < len; i++)
-		_putchar(str[i]);
+	_puts(str);
 	return (len);
 }
