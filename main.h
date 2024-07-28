@@ -24,6 +24,7 @@ typedef struct format_specifier
 int _putchar(char);
 int _puts(char *);
 int hex(unsigned long int);
+int HEX(unsigned long int);
 int _strlen(char *);
 int _print_str(va_list);
 int _print_percent(va_list);
@@ -32,6 +33,7 @@ int _print_int(va_list argPtr);
 int _print_bin(va_list argPtr);
 int _print_hex(va_list argPtr);
 int _print_HEX(va_list argPtr);
+int _print_ptr(va_list argPtr);
 int _printf(const char *format, ...);
 
 #endif
