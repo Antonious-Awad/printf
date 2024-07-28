@@ -34,6 +34,8 @@ int _print_bin(va_list argPtr);
 int _print_hex(va_list argPtr);
 int _print_HEX(va_list argPtr);
 int _print_ptr(va_list argPtr);
+int _print_oct(va_list argPtr);
+int _print_unsigned(va_list argPtr);
 int _printf(const char *format, ...);
 
 #endif
