@@ -28,14 +28,17 @@ int printU(unsigned int num)
 	if (!p)
 		return (-1);
 
-	i = len - 1;
+	i = 0;
 	while (num)
 	{
 		last = num % 10;
-		p[i--] = last;
+		p[i++] = last + '0';
 		num /= 10;
 	}
-	_puts(p);
+	for (i = (len - 1); i >= 0; i--)
+	{
+		_putchar(p[i]);
+	}
 	free(p);
 	return (len);
 }
