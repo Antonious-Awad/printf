@@ -12,6 +12,9 @@ int _print_hex(va_list argPtr)
 	unsigned int n = va_arg(argPtr, unsigned int);
 	unsigned int temp = n;
 
+	if (n == 0)
+		return (_putchar('0'));
+
 	while (temp > 0)
 	{
 		temp /= 16;
@@ -19,6 +22,9 @@ int _print_hex(va_list argPtr)
 	}
 
 	p = malloc(sizeof(int) * len);
+
+	if (!p)
+		return (-1);
 
 	for (i = 0; i < len; i++)
 	{
