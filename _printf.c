@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 			{"%X", _print_HEX}, {"%x", _print_hex}, {"%p", _print_ptr},
 			{"%o", _print_oct}, {"%u", _print_unsigned}};
 	/*Length of convert struct*/
-	int convert_len = 9, i, j, output_len = 0, isSpecifier;
+	int convert_len = 11, i, j, output_len = 0, isSpecifier;
 	va_list argPtr;
 
 	va_start(argPtr, format);
