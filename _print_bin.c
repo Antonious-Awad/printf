@@ -13,7 +13,7 @@ int _print_bin(va_list argPtr)
 
 	num = va_arg(argPtr, unsigned int);
 	if (num == 0)
-		_putchar('0');
+		return (_putchar('0'));
 	temp = num;
 
 	while (temp > 0)
