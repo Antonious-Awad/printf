@@ -11,6 +11,9 @@ int hex(unsigned long int n)
 	long int *p;
 	unsigned long int temp;
 
+	if (n == 0)
+		return (_putchar('0'));
+
 	temp = n;
 	while (temp > 0)
 	{
@@ -19,6 +22,9 @@ int hex(unsigned long int n)
 	}
 
 	p = malloc(sizeof(long int) * len);
+
+	if (!p)
+		return (-1);
 
 	for (i = 0; i < len; i++)
 	{
@@ -47,6 +53,9 @@ int HEX(unsigned long int n)
 	long int *p;
 	unsigned long int temp;
 
+	if (n == 0)
+		return (_putchar('0'));
+
 	temp = n;
 	while (temp > 0)
 	{
@@ -55,6 +64,8 @@ int HEX(unsigned long int n)
 	}
 
 	p = malloc(sizeof(long int) * len);
+	if (!p)
+		return (-1);
 
 	for (i = 0; i < len; i++)
 	{
