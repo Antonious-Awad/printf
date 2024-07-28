@@ -6,34 +6,26 @@
  */
 int _print_oct(va_list argPtr)
 {
-	long int len = 0, i;
-	long int *p;
 	unsigned int n = va_arg(argPtr, unsigned int);
+	int len = 0, i;
 	unsigned int temp = n;
+	/*11 octal digits maximum (32 bits)*/
+	char buffer[11];
 
 	if (n == 0)
 		return (_putchar('0'));
 
 	while (temp > 0)
 	{
+		buffer[len] = (temp % 8) + '0';
 		temp /= 8;
 		len++;
 	}
 
-	p = malloc(sizeof(int) * len);
-
-	if (!p)
-		return (-1);
-
-	for (i = 0; i < len; i++)
-	{
-		p[i] = n % 8;
-		n /= 8;
-	}
 	for (i = len - 1; i >= 0; i--)
 	{
-		_putchar(p[i] + '0');
+		_putchar(buffer[i]);
 	}
-	free(p);
+
 	return (len);
 }
