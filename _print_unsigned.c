@@ -7,39 +7,24 @@
 
 int printU(unsigned int num)
 {
-	unsigned int temp = num;
-	int len = 0, last, i;
-	char *p;
+	int len = 0;
+	/*10 decimal digits maximum (32bits)*/
+	char buffer[10];
 
 	if (num == 0)
 		return (_putchar('0'));
 
-	while (temp)
+	while (num > 0)
 	{
-		temp /= 10;
-		len++;
-	}
-
-	if (len == 0)
-		return (0);
-
-	p = malloc(sizeof(char) * len);
-
-	if (!p)
-		return (-1);
-
-	i = 0;
-	while (num)
-	{
-		last = num % 10;
-		p[i++] = last + '0';
+		buffer[len++] = (num % 10) + '0';
 		num /= 10;
 	}
-	for (i = (len - 1); i >= 0; i--)
+
+	for (int i = len - 1; i >= 0; i--)
 	{
-		_putchar(p[i]);
+		_putchar(buffer[i]);
 	}
-	free(p);
+
 	return (len);
 }
 
