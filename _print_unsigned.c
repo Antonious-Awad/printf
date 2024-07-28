@@ -7,7 +7,7 @@
 
 int printU(unsigned int num)
 {
-	int len = 0;
+	int len = 0, i;
 	/*10 decimal digits maximum (32bits)*/
 	char buffer[10];
 
@@ -20,7 +20,7 @@ int printU(unsigned int num)
 		num /= 10;
 	}
 
-	for (int i = len - 1; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
 	}
