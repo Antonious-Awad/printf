@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 			{"%s", _print_str}, {"%%", _print_percent}, {"%c", _print_char},
 			{"%d", _print_int}, {"%i", _print_int}, {"%b", _print_bin},
 			{"%X", _print_HEX}, {"%x", _print_hex}, {"%p", _print_ptr},
-			{"%o", _print_oct}, {"%u", _print_unsigned}, {"%S", _print_custstr}
+			{"%o", _print_oct}, {"%u", _print_unsigned}, {"%S", _print_STR}
 			};
 	/*Length of convert struct*/
 	int convert_len = 12, i, j, output_len = 0, isSpecifier;

@@ -6,7 +6,7 @@
  * Return: string length
  */
 
-int _print_custstr(va_list argPtr)
+int _print_STR(va_list argPtr)
 {
 	char *str;
 	int len = 0;
