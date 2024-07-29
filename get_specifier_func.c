@@ -24,15 +24,13 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			{"%u", _print_unsigned},
 			{"%S", _print_STR}};
 
-	f->space = f->plus = f->hash = 0;
-
 	while (format[*i] == '+' || format[*i] == ' ' || format[*i] == '#')
 	{
 		if (format[*i] == '+')
 			f->plus = 1;
-		if (format[*i] == ' ')
+		else if (format[*i] == ' ')
 			f->space = 1;
-		if (format[*i] == '#')
+		else if (format[*i] == '#')
 			f->hash = 1;
 		(*i)++;
 	}
