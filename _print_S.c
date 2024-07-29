@@ -29,11 +29,13 @@ int _print_STR(va_list argPtr, flag *f)
 			len += _putchar('x');
 			if (*str < 16)
 			{
-				_putchar('0');
+				len += _putchar('0');
 				len += HEX(*str);
 			}
 			else
+			{
 				len += HEX(*str);
+			}
 		}
 		else
 		{
