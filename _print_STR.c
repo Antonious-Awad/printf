@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _print_custstr - prints a string
+ * _print_STR - prints a string
  * @argPtr: argument pointer
  * Return: string length
  */
@@ -14,9 +14,9 @@ int _print_STR(va_list argPtr)
 	str = va_arg(argPtr, char *);
 	if (!str)
 	{
-	    str = "(null)";
-	    len = _strlen(str);
-	    _puts(str);
+		str = "(null)";
+		len = _strlen(str);
+		_puts(str);
 		return (len);
 	}
 	while (*str)
@@ -30,9 +30,9 @@ int _print_STR(va_list argPtr)
 		}
 		else
 		{
-		    len += _putchar(*str);
+			len += _putchar(*str);
 		}
-	    str++;
+		str++;
 	}
 	return (len);
 }

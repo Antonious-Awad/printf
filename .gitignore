@@ -2,3 +2,4 @@
 test.c
 *.dSYM
 *.out
+_print_rot13.c
