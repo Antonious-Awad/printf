@@ -25,7 +25,6 @@ int _print_STR(va_list argPtr)
 		{
 			len += _putchar('\\');
 			len += _putchar('x');
-			len += _putchar('0');
 			len += HEX(*str);
 		}
 		else
