@@ -9,7 +9,7 @@
 int _print_HEX(va_list argPtr, flag *f)
 {
 	unsigned int n = va_arg(argPtr, unsigned int);
-	int len = 0, i;
+	int len = 0, i, flag_len = 0;
 	unsigned int temp = n;
 	char buffer[8];
 
@@ -20,7 +20,7 @@ int _print_HEX(va_list argPtr, flag *f)
 	{
 		_putchar('0');
 		_putchar('X');
-		len += 2;
+		flag_len += 2;
 	}
 
 	while (temp > 0)
@@ -37,5 +37,5 @@ int _print_HEX(va_list argPtr, flag *f)
 		_putchar(buffer[i]);
 	}
 
-	return (len);
+	return (len + flag_len);
 }
