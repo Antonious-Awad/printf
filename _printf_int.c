@@ -43,7 +43,7 @@ int _print_int(va_list argPtr)
 	}
 	else
 	{
-		putchar('0');
+		_putchar('0');
 		return (1);
 	}
 	return (count);
