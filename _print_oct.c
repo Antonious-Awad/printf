@@ -8,7 +8,7 @@
 int _print_oct(va_list argPtr, flag *f)
 {
 	unsigned int n = va_arg(argPtr, unsigned int);
-	int len = 0, i;
+	int len = 0, i, flag_len = 0;
 	unsigned int temp = n;
 	/*11 octal digits maximum (32 bits)*/
 	char buffer[11];
@@ -19,7 +19,7 @@ int _print_oct(va_list argPtr, flag *f)
 	if (f->hash && n != 0)
 	{
 		_putchar('0');
-		len++;
+		flag_len++;
 	}
 
 	while (temp > 0)
@@ -34,5 +34,5 @@ int _print_oct(va_list argPtr, flag *f)
 		_putchar(buffer[i]);
 	}
 
-	return (len);
+	return (len + flag_len);
 }
