@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			f.plus = f.space = f.hash = 0;
 			spec_func = get_sf(format, &i, &f);
 			if (spec_func)
 				output_len += spec_func(argPtr, &f);
