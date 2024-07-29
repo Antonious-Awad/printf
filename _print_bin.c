@@ -2,15 +2,17 @@
 /**
  * _print_bin - prints binary number
  * @argPtr: argument pointer
+ * @f: flag ptr
  * Return: number of digits of binary number
  */
 
-int _print_bin(va_list argPtr)
+int _print_bin(va_list argPtr, flag *f)
 {
 	unsigned int temp, num;
 	int len = 0, i, bin, counter;
 	char *p;
 
+	(void)f;
 	num = va_arg(argPtr, unsigned int);
 	if (num == 0)
 		return (_putchar('0'));

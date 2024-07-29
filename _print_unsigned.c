@@ -31,14 +31,16 @@ int printU(unsigned int num)
 /**
  * _print_unsigned - prints an integer
  * @argPtr: argument pointer
+ * @f: flag ptr
  * Return: digits count
  */
 
-int _print_unsigned(va_list argPtr)
+int _print_unsigned(va_list argPtr, flag *f)
 {
 	unsigned int num;
 	int len;
 
+	(void)f;
 	num = va_arg(argPtr, unsigned int);
 
 	len = printU(num);

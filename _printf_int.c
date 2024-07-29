@@ -1,19 +1,33 @@
 #include "main.h"
 
 /**
-* _print_int - Function to print integer
-* @argPtr: argument Pointer
-* Return: counter(number of printed characters)
-*/
+ * add_flag - adds a flag to the number
+ * @f: pointer to flag struct
+ * Return: 1(for add flag)
+ */
 
-int _print_int(va_list argPtr)
+int add_flag(flag *f)
 {
-	int n, lens, ext, i, numPrnt, count, num;
+	if (f->plus)
+		_putchar('+');
+	else if (f->space)
+		_putchar(' ');
+	return (1);
+}
+/**
+ * _print_int - Function to print integer
+ * @argPtr: argument Pointer
+ * @f: pointer to flag struct
+ * Return: counter(number of printed characters)
+ */
 
-	n = va_arg(argPtr, int);
-	count = 0;
-	lens = 0;
+int _print_int(va_list argPtr, flag *f)
+{
+	int n = va_arg(argPtr, int), lens = 0, ext, i, numPrnt, count = 0, num;
+
 	num = n;
+	if (n >= 0)
+		count += add_flag(f);
 	if (n != 0)
 	{
 		if (n < 0)
@@ -37,14 +51,14 @@ int _print_int(va_list argPtr)
 			else
 				_putchar(numPrnt + '0');
 			count++;
-			n  = n - (numPrnt * ext);
+			n = n - (numPrnt * ext);
 			ext /= 10;
 		}
 	}
 	else
 	{
 		_putchar('0');
-		return (1);
+		return (1 + (f->plus || f->space));
 	}
 	return (count);
 }
