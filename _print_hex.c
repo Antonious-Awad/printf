@@ -2,10 +2,10 @@
 /**
  * _print_hex - converts passed number to hexadecimal (lower case)
  * @argPtr: argument pointer
+ * @f: pointer to flag structure
  * Return: length of hexadecimal
  */
-
-int _print_hex(va_list argPtr)
+int _print_hex(va_list argPtr, flag *f)
 {
 	unsigned int n = va_arg(argPtr, unsigned int);
 	int len = 0, i;
@@ -15,6 +15,13 @@ int _print_hex(va_list argPtr)
 
 	if (n == 0)
 		return (_putchar('0'));
+
+	if (f->hash && n != 0)
+	{
+		_putchar('0');
+		_putchar('x');
+		len += 2;
+	}
 
 	while (temp > 0)
 	{

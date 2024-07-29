@@ -2,9 +2,10 @@
 /**
  * _print_oct - prints the Base 8 of the number
  * @argPtr: argument pointer
+ * @f: flag pointer
  * Return: digits count of Octal number
  */
-int _print_oct(va_list argPtr)
+int _print_oct(va_list argPtr, flag *f)
 {
 	unsigned int n = va_arg(argPtr, unsigned int);
 	int len = 0, i;
@@ -14,6 +15,12 @@ int _print_oct(va_list argPtr)
 
 	if (n == 0)
 		return (_putchar('0'));
+
+	if (f->hash && n != 0)
+	{
+		_putchar('0');
+		len++;
+	}
 
 	while (temp > 0)
 	{

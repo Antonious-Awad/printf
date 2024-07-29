@@ -3,14 +3,16 @@
 /**
  * _print_STR - prints a string
  * @argPtr: argument pointer
+ * @f: flag ptr
  * Return: string length
  */
 
-int _print_STR(va_list argPtr)
+int _print_STR(va_list argPtr, flag *f)
 {
 	char *str;
 	int len = 0;
 
+	(void)f;
 	str = va_arg(argPtr, char *);
 	if (!str)
 	{
