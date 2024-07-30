@@ -22,14 +22,14 @@ int _print_rot13(va_list argPtr, flag *f)
 		str = "(null)";
 	for (i = 0; str[i] != '\0'; i++)
 	{
+		is_rot13 = 0;
 		for (j = 0; a[j] != '\0'; j++)
 		{
-			is_rot13 = 0;
 			if (str[i] == a[j])
 			{
 				is_rot13 = 1;
 				len++;
-				_putchar(b[i]);
+				_putchar(b[j]);
 				break;
 			}
 		}
