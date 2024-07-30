@@ -18,24 +18,18 @@ int _print_rot13(va_list argPtr, flag *f)
 	(void)f;
 	str = va_arg(argPtr, char *);
 	if (!str)
-	{
 		str = "(null)";
-		len = _strlen(str);
-		_puts(str);
-		return (len);
-	}
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		for (j = 0; a[j] != '\0'; j++)
 		{
 			if (str[i] == a[j])
 			{
-				str[i] = b[j];
+				_putchar(b[i]);
 				break;
 			}
 		}
 	}
 	len = _strlen(str);
-	_puts(str);
 	return (len);
 }
