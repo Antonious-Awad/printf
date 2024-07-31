@@ -12,30 +12,32 @@ int _print_rot13(va_list argPtr, flag *f)
 	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	int len = 0;
+	int is_rot13 = 0;
 	int i, j;
 	char *str;
 
 	(void)f;
 	str = va_arg(argPtr, char *);
 	if (!str)
-	{
 		str = "(null)";
-		len = _strlen(str);
-		_puts(str);
-		return (len);
-	}
 	for (i = 0; str[i] != '\0'; i++)
 	{
+		is_rot13 = 0;
 		for (j = 0; a[j] != '\0'; j++)
 		{
 			if (str[i] == a[j])
 			{
-				str[i] = b[j];
+				is_rot13 = 1;
+				len++;
+				_putchar(b[j]);
 				break;
 			}
 		}
+		if (!is_rot13)
+		{
+			len++;
+			_putchar(str[i]);
+		}
 	}
-	len = _strlen(str);
-	_puts(str);
 	return (len);
 }
