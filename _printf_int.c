@@ -53,15 +53,10 @@ int _print_int(va_list argPtr, flag *f)
 
 	/* Store digits in reverse order */
 	while (num > 0)
-	{
 		buffer[i++] = num % 10 + '0';
-		num /= 10;
-	}
+	num /= 10;
 
 	while (i > 0)
-	{
 		count += _putchar(buffer[--i]);
-	}
-
 	return (count);
 }
