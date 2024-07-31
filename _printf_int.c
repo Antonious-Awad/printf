@@ -59,9 +59,6 @@ int _print_int(va_list argPtr, flag *f)
 	}
 
 	while (i > 0)
-	{
 		count += _putchar(buffer[--i]);
-	}
-
 	return (count);
 }
