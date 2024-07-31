@@ -53,6 +53,7 @@ int _print_ptr(va_list argPtr, flag *);
 int _print_oct(va_list argPtr, flag *);
 int _print_unsigned(va_list argPtr, flag *);
 int _print_STR(va_list argPtr, flag *f);
+int _print_rev(va_list argPtr, float *);
 int _print_rot13(va_list argPtr, flag *);
 int (*get_sf(const char *format, int *i, flag *f))(va_list, flag *);
 int _printf(const char *format, ...);
