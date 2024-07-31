@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * _print_rev - reverses a given string
- * @argPtr: argument pointer
- * @f: flag Pointer
- * Return: length of string
- */
+* _print_rev - reverses a given string
+* @argPtr: argument pointer
+* @f: flag Pointer
+* Return: length of string
+*/
 
 int _print_rev(va_list argPtr, flag *f)
 {
-	const char *str;
+	char *str;
 	char *rev_str;
 	int len = 0, i, j;
 
@@ -17,9 +17,11 @@ int _print_rev(va_list argPtr, flag *f)
 	str = va_arg(argPtr, char*);
 
 	if (!str)
+	{
+		str = "(null)";
 		return (0);
-
-	rev_str = malloc(len + 1);
+	}
+	rev_str = malloc(sizeof(char) * len + 1);
 	_strcpy(rev_str, str);
 	len = _strlen(rev_str);
 
