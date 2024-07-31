@@ -12,13 +12,15 @@
  * struct flags - struct containing flags to activate
  * @plus: flag for +
  * @space: flag for ' '
- * @hash: struct for
+ * @hash: flag for '#'
+ * @length: length modifier
  */
 typedef struct flags
 {
 	int plus;
 	int space;
 	int hash;
+	char length;
 } flag;
 
 /**

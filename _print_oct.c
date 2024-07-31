@@ -7,11 +7,20 @@
  */
 int _print_oct(va_list argPtr, flag *f)
 {
-	unsigned int n = va_arg(argPtr, unsigned int);
+	unsigned long int n;
 	int len = 0, i, flag_len = 0;
-	unsigned int temp = n;
-	/*11 octal digits maximum (32 bits)*/
-	char buffer[11];
+	unsigned long int temp;
+	/*22 octal digits maximum (64 bits)*/
+	char buffer[22];
+
+	if (f->length == 'l')
+		n = va_arg(argPtr, unsigned long int);
+	else if (f->length == 'h')
+		n = (unsigned short int)va_arg(argPtr, unsigned int);
+	else
+		n = va_arg(argPtr, unsigned int);
+
+	temp = n;
 
 	if (n == 0)
 		return (_putchar('0'));
