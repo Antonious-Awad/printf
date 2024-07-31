@@ -42,6 +42,7 @@ int hex(unsigned long int);
 int HEX(unsigned long int);
 char *rot13(char *s);
 int _strlen(char *);
+char *_strcpy(char *dest, const char *src);
 int _print_str(va_list argPtr, flag *);
 int _print_percent(va_list, flag *);
 int _print_char(va_list argPtr, flag *);
