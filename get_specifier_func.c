@@ -9,7 +9,7 @@
  */
 int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 {
-	int j, convert_len = 13;
+	int j, convert_len = 14;
 	fs convert[] = {
 			{"%s", _print_str},
 			{"%%", _print_percent},
@@ -23,7 +23,8 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			{"%o", _print_oct},
 			{"%u", _print_unsigned},
 			{"%S", _print_STR},
-			{"%R", _print_rot13}
+			{"%R", _print_rot13},
+			{"%r", _print_rev}
 			};
 
 	while (format[*i] == '+' || format[*i] == ' ' ||
