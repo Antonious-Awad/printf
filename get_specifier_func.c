@@ -26,8 +26,11 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			{"%R", _print_rot13}
 			};
 
-	while (format[*i] == '+' || format[*i] == ' ' || format[*i] == '#')
+	while (format[*i] == '+' || format[*i] == ' ' ||
+				 format[*i] == '#' || format[*i] == 'l' || format[*i] == 'h')
 	{
+		if (format[*i] == 'l' || format[*i] == 'h')
+			f->length = format[*i];
 		if (format[*i] == '+')
 			f->plus = 1;
 		else if (format[*i] == ' ')

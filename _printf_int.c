@@ -22,9 +22,17 @@ int add_flag(flag *f)
  */
 int _print_int(va_list argPtr, flag *f)
 {
-	int n = va_arg(argPtr, int), count = 0, i = 0;
-	unsigned int num;
-	char buffer[11]; /* INT_MAX has 10 digits, plus null terminator */
+	long int n;
+	int count = 0, i = 0;
+	unsigned long int num;
+	char buffer[20]; /* Long_MAX has 19 digits, plus null terminator */
+
+	if (f->length == 'l')
+		n = va_arg(argPtr, long int);
+	else if (f->length == 'h')
+		n = (short int)va_arg(argPtr, int);
+	else
+		n = va_arg(argPtr, int);
 
 	if (n == 0)
 	{
@@ -35,12 +43,12 @@ int _print_int(va_list argPtr, flag *f)
 	if (n < 0)
 	{
 		count += _putchar('-');
-		num = (unsigned int)(-n);
+		num = (unsigned long int)(-n);
 	}
 	else
 	{
 		count += add_flag(f);
-		num = (unsigned int)n;
+		num = (unsigned long int)n;
 	}
 
 	/* Store digits in reverse order */

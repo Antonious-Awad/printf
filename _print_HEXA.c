@@ -8,10 +8,19 @@
 
 int _print_HEX(va_list argPtr, flag *f)
 {
-	unsigned int n = va_arg(argPtr, unsigned int);
+	unsigned long int n;
 	int len = 0, i, flag_len = 0;
-	unsigned int temp = n;
-	char buffer[8];
+	unsigned long int temp;
+	char buffer[16];
+
+	if (f->length == 'l')
+		n = va_arg(argPtr, unsigned long int);
+	else if (f->length == 'h')
+		n = (unsigned short int)va_arg(argPtr, unsigned int);
+	else
+		n = va_arg(argPtr, unsigned int);
+
+	temp = n;
 
 	if (n == 0)
 		return (_putchar('0'));
