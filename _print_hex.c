@@ -32,7 +32,7 @@ int get_hex_len(unsigned long int temp, char *buffer)
 	while (temp > 0)
 	{
 		digit = temp % 16;
-		buffer[len] = (digit < 10) ? (digit + '0') : (digit - 10 + 'A');
+		buffer[len] = (digit < 10) ? (digit + '0') : (digit - 10 + 'a');
 		temp /= 16;
 		len++;
 	}
