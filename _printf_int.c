@@ -34,7 +34,6 @@ int _print_int(va_list argPtr, flag *f)
 		n = (short int)va_arg(argPtr, int);
 	else
 		n = va_arg(argPtr, int);
-
 	if (n == 0)
 	{
 		buffer[i++] = '0';
@@ -46,33 +45,21 @@ int _print_int(va_list argPtr, flag *f)
 		num = (unsigned long int)(-n);
 	}
 	else
-	{
 		num = (unsigned long int)n;
-	}
-
-	/* Store digits in reverse order */
 	while (num > 0)
 	{
 		buffer[i++] = num % 10 + '0';
 		num /= 10;
 	}
-
-	/* Calculate padding (width - len - sign) */
 	padding = f->width - i - (is_negative || f->plus || f->space ? 1 : 0);
-
-	/* Print padding */
 	while (padding-- > 0)
 		count += _putchar(' ');
-
-	/* Print sign or space */
 	if (is_negative)
 		count += _putchar('-');
 	else
 		count += add_flag(f);
-
 	/* Print number */
 	while (i > 0)
 		count += _putchar(buffer[--i]);
-
 	return (count);
 }

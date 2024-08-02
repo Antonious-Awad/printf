@@ -21,7 +21,6 @@ int _print_oct(va_list argPtr, flag *f)
 		n = va_arg(argPtr, unsigned int);
 
 	temp = n;
-
 	if (n == 0)
 	{
 		len = 1;
@@ -30,30 +29,22 @@ int _print_oct(va_list argPtr, flag *f)
 			_putchar(' ');
 		return (_putchar('0') + (f->width > 1 ? f->width - 1 : 0));
 	}
-
 	if (f->hash && n != 0)
 		flag_len++;
-
 	while (temp > 0)
 	{
 		buffer[len] = (temp % 8) + '0';
 		temp /= 8;
 		len++;
 	}
-
 	padding = f->width - len - flag_len;
 	while (padding-- > 0)
 		_putchar(' ');
 
 	if (f->hash && n != 0)
-	{
 		_putchar('0');
-	}
 
 	for (i = len - 1; i >= 0; i--)
-	{
 		_putchar(buffer[i]);
-	}
-
 	return (len + flag_len > f->width ? len + flag_len : f->width);
 }
