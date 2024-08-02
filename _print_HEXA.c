@@ -9,7 +9,7 @@
 int _print_HEX(va_list argPtr, flag *f)
 {
 	unsigned long int n;
-	int len = 0, i, flag_len = 0;
+	int len = 0, i, flag_len = 0, padding;
 	unsigned long int temp;
 	char buffer[16];
 
@@ -23,14 +23,17 @@ int _print_HEX(va_list argPtr, flag *f)
 	temp = n;
 
 	if (n == 0)
-		return (_putchar('0'));
+	{
+		len = 1;
+		padding = f->width - len;
+		while (padding-- > 0)
+			_putchar(' ');
+
+		return (_putchar('0') + (f->width > 1 ? f->width - 1 : 0));
+	}
 
 	if (f->hash && n != 0)
-	{
-		_putchar('0');
-		_putchar('X');
 		flag_len += 2;
-	}
 
 	while (temp > 0)
 	{
@@ -41,10 +44,20 @@ int _print_HEX(va_list argPtr, flag *f)
 		len++;
 	}
 
+	padding = f->width - len - flag_len;
+	while (padding-- > 0)
+		_putchar(' ');
+
+	if (f->hash && n != 0)
+	{
+		_putchar('0');
+		_putchar('X');
+	}
+
 	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
 	}
 
-	return (len + flag_len);
+	return (len + flag_len > f->width ? len + flag_len : f->width);
 }

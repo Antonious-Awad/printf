@@ -9,20 +9,20 @@
 int _print_str(va_list argPtr, flag *f)
 {
 	char *str;
-	int len;
+	int len, count = 0;
+	int padding;
 
-	(void)f;
 	str = va_arg(argPtr, char *);
 
 	if (!str)
-	{
 		str = "(null)";
-		len = _strlen(str);
-		_puts(str);
-		return (len);
-	}
 
 	len = _strlen(str);
-	_puts(str);
-	return (len);
+
+	padding = f->width - len;
+	while (padding-- > 0)
+		count += _putchar(' ');
+
+	count += _puts(str);
+	return (count);
 }

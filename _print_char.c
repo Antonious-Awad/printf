@@ -10,9 +10,14 @@
 int _print_char(va_list argPtr, flag *f)
 {
 	char c;
+	int count = 0, padding;
 
-	(void)f;
 	c = va_arg(argPtr, int);
-	_putchar(c);
-	return (1);
+
+	padding = f->width - 1;
+	while (padding-- > 0)
+		count += _putchar(' ');
+
+	count += _putchar(c);
+	return (count);
 }

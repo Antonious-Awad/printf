@@ -24,11 +24,11 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			{"%u", _print_unsigned},
 			{"%S", _print_STR},
 			{"%R", _print_rot13},
-			{"%r", _print_rev}
-			};
+			{"%r", _print_rev}};
 
 	while (format[*i] == '+' || format[*i] == ' ' ||
-				 format[*i] == '#' || format[*i] == 'l' || format[*i] == 'h')
+				 format[*i] == '#' || format[*i] == 'l' ||
+				 format[*i] == 'h' || (format[*i] >= '0' && format[*i] <= '9'))
 	{
 		if (format[*i] == 'l' || format[*i] == 'h')
 			f->length = format[*i];
@@ -38,6 +38,8 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			f->space = 1;
 		else if (format[*i] == '#')
 			f->hash = 1;
+		else if (format[*i] >= '0' && format[*i] <= '9')
+			f->width = f->width * 10 + (format[*i] - '0');
 		(*i)++;
 	}
 
