@@ -41,6 +41,7 @@ printf("Hi my name is %s\n", "Tony"); //outputs: Hi my name is Tony
 | `-` |Left-justify the output within the field width that was given; Right justification is the default (see _width_ sub-specifier). |
 | `+` |Precedes the result with a plus sign for positive numbers. By default, only negative numbers are preceded with a `-` sign. |
 | `(space)` |If no sign is going to be written, a blank space is inserted before the value. |
+| `#` | Used with hexadecimal and Octal specifiers to add a `0` (octal) or `0x` (`0X` if used with `%X`)(hexadecimal) before printing the value of the number |
 
 - It's also implemented to handle the following length modifiers
 
