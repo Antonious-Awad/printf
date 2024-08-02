@@ -15,6 +15,7 @@
  * @hash: flag for '#'
  * @length: length modifier
  * @width: field width
+ * @isLeft: boolean for negative field width
  */
 typedef struct flags
 {
@@ -23,6 +24,7 @@ typedef struct flags
 	int hash;
 	char length;
 	int width;
+	int isLeft;
 } flag;
 
 /**
@@ -45,6 +47,7 @@ int HEX(unsigned long int);
 char *rot13(char *s);
 int _strlen(char *);
 char *_strcpy(char *dest, const char *src);
+int _print_padding(int padding);
 int _print_str(va_list argPtr, flag *);
 int _print_percent(va_list, flag *);
 int _print_char(va_list argPtr, flag *);

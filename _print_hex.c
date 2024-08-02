@@ -1,34 +1,34 @@
 #include "main.h"
 /**
- * _print_hex - converts passed number to hexadecimal (lower case)
- * @argPtr: argument pointer
- * @f: pointer to flag structure
- * Return: length of hexadecimal
+ * print_hex_prefix - prints  the prefix if there's a # passed
+ * @f: flag pointer
+ * @n: number
+ * Return: characters printed
  */
-int _print_hex(va_list argPtr, flag *f)
-{
-	unsigned long int n;
-	int len = 0, i, flag_len = 0, padding;
-	char buffer[16];
-	unsigned long int temp, digit;
 
-	if (f->length == 'l')
-		n = va_arg(argPtr, unsigned long int);
-	else if (f->length == 'h')
-		n = (unsigned short int)va_arg(argPtr, unsigned int);
-	else
-		n = va_arg(argPtr, unsigned int);
-	temp = n;
-	if (n == 0)
-	{
-		len = 1;
-		padding = f->width - len;
-		while (padding-- > 0)
-			_putchar(' ');
-		return (_putchar('0') + (f->width > 1 ? f->width - 1 : 0));
-	}
+int print_hex_prefix(flag *f, unsigned long int n)
+{
+	int count = 0;
+
 	if (f->hash && n != 0)
-		flag_len += 2;
+	{
+		count += _putchar('0');
+		count += _putchar('x');
+	}
+	return (count);
+}
+
+/**
+ * get_hex_len - returns number of digits of hex number
+ * @temp: original number copy
+ * @buffer: buffer array to update
+ * Return: number of digits
+ */
+int get_hex_len(unsigned long int temp, char *buffer)
+{
+	unsigned long int digit;
+	int len = 0;
+
 	while (temp > 0)
 	{
 		digit = temp % 16;
@@ -36,15 +36,53 @@ int _print_hex(va_list argPtr, flag *f)
 		temp /= 16;
 		len++;
 	}
-	padding = f->width - len - flag_len;
-	while (padding-- > 0)
-		_putchar(' ');
-	if (f->hash && n != 0)
+	return (len);
+}
+
+/**
+ * _print_hex - converts passed number to hexadecimal
+ * @argPtr: argument pointer
+ * @f: flag pointer
+ * Return: length of hexadecimal
+ */
+int _print_hex(va_list argPtr, flag *f)
+{
+	unsigned long int n;
+	int len = 0, i, flag_len = 0, padding, count = 0;
+	char buffer[16];
+
+	if (f->length == 'l')
+		n = va_arg(argPtr, unsigned long int);
+	else if (f->length == 'h')
+		n = (unsigned short int)va_arg(argPtr, unsigned int);
+	else
+		n = va_arg(argPtr, unsigned int);
+	if (n == 0)
 	{
-		_putchar('0');
-		_putchar('x');
+		len = 1;
+		padding = f->width - len;
+		if (!f->isLeft)
+			count += _print_padding(padding);
+		count += _putchar('0');
+		if (f->isLeft)
+			count += _print_padding(padding);
+		return (count);
 	}
+	if (f->hash && n != 0)
+		flag_len += 2;
+	len += get_hex_len(n, buffer);
+	padding = f->width - len - flag_len;
+	if (!f->isLeft)
+	{
+		count += _print_padding(padding);
+		count += print_hex_prefix(f, n);
+	}
+	else
+		count += print_hex_prefix(f, n);
+
 	for (i = len - 1; i >= 0; i--)
-		_putchar(buffer[i]);
-	return (len + flag_len > f->width ? len + flag_len : f->width);
+		count += _putchar(buffer[i]);
+	if (f->isLeft)
+		count += _print_padding(padding);
+	return (count);
 }

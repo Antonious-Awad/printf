@@ -28,7 +28,8 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 
 	while (format[*i] == '+' || format[*i] == ' ' ||
 				 format[*i] == '#' || format[*i] == 'l' ||
-				 format[*i] == 'h' || (format[*i] >= '0' && format[*i] <= '9'))
+				 format[*i] == 'h' || format[*i] == '-' ||
+				 (format[*i] >= '0' && format[*i] <= '9'))
 	{
 		if (format[*i] == 'l' || format[*i] == 'h')
 			f->length = format[*i];
@@ -38,6 +39,11 @@ int (*get_sf(const char *format, int *i, flag * f))(va_list, flag *)
 			f->space = 1;
 		else if (format[*i] == '#')
 			f->hash = 1;
+		else if (format[*i] == '-')
+		{
+			if ((format[*i + 1] >= '0' && format[*i + 1] <= '9'))
+				f->isLeft = 1;
+		}
 		else if (format[*i] >= '0' && format[*i] <= '9')
 			f->width = f->width * 10 + (format[*i] - '0');
 		(*i)++;

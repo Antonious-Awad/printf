@@ -15,9 +15,14 @@ int _print_char(va_list argPtr, flag *f)
 	c = va_arg(argPtr, int);
 
 	padding = f->width - 1;
-	while (padding-- > 0)
-		count += _putchar(' ');
+
+	if (!f->isLeft)
+		count += _print_padding(padding);
 
 	count += _putchar(c);
+
+	if (f->isLeft)
+		count += _print_padding(padding);
+
 	return (count);
 }
