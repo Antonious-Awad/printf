@@ -35,6 +35,7 @@ printf("Hi my name is %s\n", "Tony"); //outputs: Hi my name is Tony
 
 - It's also optimized to handle printing out characters once each 1 KB (1024 Byte) (check `_putchar.c` for reference)
 - It can also handle the following flags
+
 |Flag|Description|
 |----|-----------|
 | `-` |Left-justify the output within the field width that was given; Right justification is the default (see _width_ sub-specifier). |
@@ -42,12 +43,14 @@ printf("Hi my name is %s\n", "Tony"); //outputs: Hi my name is Tony
 | `(space)` |If no sign is going to be written, a blank space is inserted before the value. |
 
 - It's also implemented to handle the following length modifiers
+
 |Length modifier | Description |
 |----------------|---------------|
 | `h` | For Long Integers and unsigned long numbers |
 | `l` | For short integers and unsigned short numbers |
 
 - It contains Field Width handling
+
 |Width           |Description                    |
 |----------------|-------------------------------|
 | `(number)` |Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.|
