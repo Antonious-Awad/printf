@@ -20,9 +20,12 @@ int _print_str(va_list argPtr, flag *f)
 	len = _strlen(str);
 
 	padding = f->width - len;
-	while (padding-- > 0)
-		count += _putchar(' ');
+	if (!f->isLeft)
+		count += _print_padding(padding);
 
 	count += _puts(str);
+
+	if (f->isLeft)
+		count += _print_padding(padding);
 	return (count);
 }

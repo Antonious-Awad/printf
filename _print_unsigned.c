@@ -2,23 +2,25 @@
 /**
  * printU - prints and unsigned integer
  * @num: number
- * @width: field width
+ * @f: flag pointer
  * Return: digits count
  */
 
-int printU(unsigned long int num, int width)
+int printU(unsigned long int num, flag *f)
 {
-	int len = 0, i, padding;
-	/*20 decimal digits maximum (64bits)*/
+	int len = 0, i, padding, count = 0;
 	char buffer[20];
 
 	if (num == 0)
 	{
 		len = 1;
-		padding = width - len;
-		while (padding-- > 0)
-			_putchar(' ');
-		return (_putchar('0') + (width > 1 ? width - 1 : 0));
+		padding = f->width - len;
+		if (!f->isLeft)
+			count += _print_padding(padding);
+		count += _putchar('0');
+		if (f->isLeft)
+			count += _print_padding(padding);
+		return (count);
 	}
 
 	while (num > 0)
@@ -27,16 +29,18 @@ int printU(unsigned long int num, int width)
 		num /= 10;
 	}
 
-	padding = width - len;
-	while (padding-- > 0)
-		_putchar(' ');
+	padding = f->width - len;
+
+	if (!f->isLeft)
+		count += _print_padding(padding);
 
 	for (i = len - 1; i >= 0; i--)
-	{
-		_putchar(buffer[i]);
-	}
+		count += _putchar(buffer[i]);
 
-	return (len > width ? len : width);
+	if (f->isLeft)
+		count += _print_padding(padding);
+
+	return (count);
 }
 
 /**
@@ -57,5 +61,5 @@ int _print_unsigned(va_list argPtr, flag *f)
 	else
 		num = va_arg(argPtr, unsigned int);
 
-	return (printU(num, f->width));
+	return (printU(num, f));
 }

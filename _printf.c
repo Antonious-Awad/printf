@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	int i, output_len = 0;
 	va_list argPtr;
-	flag f = {0, 0, 0, '\0', 0};
+	flag f = {0, 0, 0, '\0', 0, 0};
 	int (*spec_func)(va_list, flag *);
 
 	va_start(argPtr, format);
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			f.plus = f.space = f.hash = 0;
+			f.plus = f.space = f.hash = f.width = f.isLeft = 0;
 			f.length = '\0';
 			spec_func = get_sf(format, &i, &f);
 			if (spec_func)
