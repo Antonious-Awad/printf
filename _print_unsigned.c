@@ -2,17 +2,24 @@
 /**
  * printU - prints and unsigned integer
  * @num: number
+ * @width: field width
  * Return: digits count
  */
 
-int printU(unsigned long int num)
+int printU(unsigned long int num, int width)
 {
-	int len = 0, i;
+	int len = 0, i, padding;
 	/*20 decimal digits maximum (64bits)*/
 	char buffer[20];
 
 	if (num == 0)
-		return (_putchar('0'));
+	{
+		len = 1;
+		padding = width - len;
+		while (padding-- > 0)
+			_putchar(' ');
+		return (_putchar('0') + (width > 1 ? width - 1 : 0));
+	}
 
 	while (num > 0)
 	{
@@ -20,12 +27,16 @@ int printU(unsigned long int num)
 		num /= 10;
 	}
 
+	padding = width - len;
+	while (padding-- > 0)
+		_putchar(' ');
+
 	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
 	}
 
-	return (len);
+	return (len > width ? len : width);
 }
 
 /**
@@ -38,7 +49,6 @@ int printU(unsigned long int num)
 int _print_unsigned(va_list argPtr, flag *f)
 {
 	unsigned long int num;
-	int len;
 
 	if (f->length == 'l')
 		num = va_arg(argPtr, unsigned long int);
@@ -47,6 +57,5 @@ int _print_unsigned(va_list argPtr, flag *f)
 	else
 		num = va_arg(argPtr, unsigned int);
 
-	len = printU(num);
-	return (len);
+	return (printU(num, f->width));
 }

@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	int i, output_len = 0;
 	va_list argPtr;
-	flag f = {0, 0, 0, '\0'};
+	flag f = {0, 0, 0, '\0', 0};
 	int (*spec_func)(va_list, flag *);
 
 	va_start(argPtr, format);

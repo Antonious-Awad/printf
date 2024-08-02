@@ -23,9 +23,10 @@ int add_flag(flag *f)
 int _print_int(va_list argPtr, flag *f)
 {
 	long int n;
-	int count = 0, i = 0;
+	int count = 0, i = 0, padding;
 	unsigned long int num;
 	char buffer[20]; /* Long_MAX has 19 digits, plus null terminator */
+	int is_negative = 0;
 
 	if (f->length == 'l')
 		n = va_arg(argPtr, long int);
@@ -36,18 +37,16 @@ int _print_int(va_list argPtr, flag *f)
 
 	if (n == 0)
 	{
-		count += add_flag(f);
-		return (count + _putchar('0'));
+		buffer[i++] = '0';
+		num = n;
 	}
-
-	if (n < 0)
+	else if (n < 0)
 	{
-		count += _putchar('-');
+		is_negative = 1;
 		num = (unsigned long int)(-n);
 	}
 	else
 	{
-		count += add_flag(f);
 		num = (unsigned long int)n;
 	}
 
@@ -58,7 +57,22 @@ int _print_int(va_list argPtr, flag *f)
 		num /= 10;
 	}
 
+	/* Calculate padding (width - len - sign) */
+	padding = f->width - i - (is_negative || f->plus || f->space ? 1 : 0);
+
+	/* Print padding */
+	while (padding-- > 0)
+		count += _putchar(' ');
+
+	/* Print sign or space */
+	if (is_negative)
+		count += _putchar('-');
+	else
+		count += add_flag(f);
+
+	/* Print number */
 	while (i > 0)
 		count += _putchar(buffer[--i]);
+
 	return (count);
 }

@@ -14,6 +14,7 @@
  * @space: flag for ' '
  * @hash: flag for '#'
  * @length: length modifier
+ * @width: field width
  */
 typedef struct flags
 {
@@ -21,6 +22,7 @@ typedef struct flags
 	int space;
 	int hash;
 	char length;
+	int width;
 } flag;
 
 /**

@@ -12,6 +12,13 @@ int _print_percent(va_list __attribute__((unused)) argPtr, flag *f)
 {
 	char c = '%';
 
-	(void)f;
-	return (_putchar(c));
+	int count = 0, padding;
+
+	padding = f->width - 1;
+	while (padding-- > 0)
+		count += _putchar(' ');
+
+	count += _putchar(c);
+
+	return (count);
 }

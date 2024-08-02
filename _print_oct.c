@@ -8,7 +8,7 @@
 int _print_oct(va_list argPtr, flag *f)
 {
 	unsigned long int n;
-	int len = 0, i, flag_len = 0;
+	int len = 0, i, flag_len = 0, padding;
 	unsigned long int temp;
 	/*22 octal digits maximum (64 bits)*/
 	char buffer[22];
@@ -23,13 +23,16 @@ int _print_oct(va_list argPtr, flag *f)
 	temp = n;
 
 	if (n == 0)
-		return (_putchar('0'));
+	{
+		len = 1;
+		padding = f->width - len;
+		while (padding-- > 0)
+			_putchar(' ');
+		return (_putchar('0') + (f->width > 1 ? f->width - 1 : 0));
+	}
 
 	if (f->hash && n != 0)
-	{
-		_putchar('0');
 		flag_len++;
-	}
 
 	while (temp > 0)
 	{
@@ -38,10 +41,19 @@ int _print_oct(va_list argPtr, flag *f)
 		len++;
 	}
 
+	padding = f->width - len - flag_len;
+	while (padding-- > 0)
+		_putchar(' ');
+
+	if (f->hash && n != 0)
+	{
+		_putchar('0');
+	}
+
 	for (i = len - 1; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
 	}
 
-	return (len + flag_len);
+	return (len + flag_len > f->width ? len + flag_len : f->width);
 }
