@@ -18,8 +18,13 @@ int _print_rev(va_list argPtr, flag *f)
 	if (str == NULL)
 		str = "(null)";
 
+	/*
+	* if(!str)
+	* str = "(null)";
+	*/
 	while (str[len] != '\0')
 		len++;
+	/* len = _strlen(str); */
 
 	for (i = len - 1;  i >= 0; i--)
 		_putchar(str[i]);
